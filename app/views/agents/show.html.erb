@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @agent.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @agent.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @agent.email %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @agent.role %>
+</p>
+
+<p>
+  <b>Distributor:</b>
+  <%= @agent.distributor %>
+</p>
+
+
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @part.amount %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @part.description %>
+</p>
+
+<p>
+  <b>Last price:</b>
+  <%= @part.last_price %>
+</p>
+
+<p>
+  <b>Last volume:</b>
+  <%= @part.last_volume %>
+</p>
+
+<p>
+  <b>Ncm:</b>
+  <%= @part.ncm %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @part.place %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @part.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

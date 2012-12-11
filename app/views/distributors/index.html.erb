@@ -1,0 +1,27 @@
+<h1>Listing distributors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @distributors.each do |distributor| %>
+  <tr>
+    <td><%= distributor.name %></td>
+    <td><%= distributor.phone %></td>
+    <td><%= distributor.email %></td>
+    <td><%= link_to 'Show', distributor %></td>
+    <td><%= link_to 'Edit', edit_distributor_path(distributor) %></td>
+    <td><%= link_to 'Destroy', distributor, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Distributor', new_distributor_path %>

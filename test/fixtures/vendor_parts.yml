@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vendor: 
+  part: 
+  part_number: MyString
+
+two:
+  vendor: 
+  part: 
+  part_number: MyString

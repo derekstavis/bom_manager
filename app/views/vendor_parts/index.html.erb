@@ -1,0 +1,27 @@
+<h1>Listing vendor_parts</h1>
+
+<table>
+  <tr>
+    <th>Vendor</th>
+    <th>Part</th>
+    <th>Part number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vendor_parts.each do |vendor_part| %>
+  <tr>
+    <td><%= vendor_part.vendor %></td>
+    <td><%= vendor_part.part %></td>
+    <td><%= vendor_part.part_number %></td>
+    <td><%= link_to 'Show', vendor_part %></td>
+    <td><%= link_to 'Edit', edit_vendor_part_path(vendor_part) %></td>
+    <td><%= link_to 'Destroy', vendor_part, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vendor part', new_vendor_part_path %>

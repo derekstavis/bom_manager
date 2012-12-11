@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 1
+  description: MyText
+  last_price: 9.99
+  last_volume: 1
+  ncm: MyString
+  place: MyString
+  title: MyString
+
+two:
+  amount: 1
+  description: MyText
+  last_price: 9.99
+  last_volume: 1
+  ncm: MyString
+  place: MyString
+  title: MyString
