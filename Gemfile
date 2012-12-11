@@ -32,7 +32,10 @@ gem 'twitter-bootstrap-rails'
 gem 'capistrano'
 
 group :production do
+	
 	gem 'mysql2'
+	gem 'turbo-sprockets-rails3'
+
 end
 
 # To use ActiveModel has_secure_password
