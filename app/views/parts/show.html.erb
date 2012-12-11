@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Part -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Amount:</b>
-  <%= @part.amount %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:amount) %>:</strong></dt>
+  <dd><%= @part.amount %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @part.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last_price) %>:</strong></dt>
+  <dd><%= @part.last_price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last_volume) %>:</strong></dt>
+  <dd><%= @part.last_volume %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ncm) %>:</strong></dt>
+  <dd><%= @part.ncm %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:place) %>:</strong></dt>
+  <dd><%= @part.place %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @part.title %></dd>
+</dl>
 
-<p>
-  <b>Description:</b>
-  <%= @part.description %>
-</p>
-
-<p>
-  <b>Last price:</b>
-  <%= @part.last_price %>
-</p>
-
-<p>
-  <b>Last volume:</b>
-  <%= @part.last_volume %>
-</p>
-
-<p>
-  <b>Ncm:</b>
-  <%= @part.ncm %>
-</p>
-
-<p>
-  <b>Place:</b>
-  <%= @part.place %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @part.title %>
-</p>
-
-
-<%= link_to 'Edit', edit_part_path(@part) %> |
-<%= link_to 'Back', parts_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              parts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_part_path(@part), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              part_path(@part),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
