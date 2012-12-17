@@ -14,6 +14,9 @@ pt-BR:
     models:
       agent: Representante
       part: Componente
+      distributor: Distribuidor
+      vendor: Fabricante
+      
 
     attributes:
       agent:
@@ -29,7 +32,12 @@ pt-BR:
         amount: Quantidade
         last_price: Último preço
         last_volume: Último Volume
-
+      vendor:
+        name: Nome
+      distributor:
+        name: Nome
+        phone: Telefone
+        email: E-mail
 
 # Traduções de strings utilizadas pelo Rails
   date:
@@ -164,6 +172,7 @@ pt-BR:
       edit: Editar
       show: Mostrar
       destroy: Excluir
+      cancel: Cancelar
     select:
       prompt: Por favor selecione
     submit:
