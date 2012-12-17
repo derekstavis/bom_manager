@@ -21,6 +21,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem "less-rails"
+
+  gem 'turbo-sprockets-rails3'
 end
 
 gem 'jquery-rails'
@@ -34,7 +36,6 @@ gem 'capistrano'
 group :production do
 	
 	gem 'mysql2'
-	gem 'turbo-sprockets-rails3'
 
 end
 
