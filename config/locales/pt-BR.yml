@@ -14,7 +14,9 @@ pt-BR:
     models:
       agent: Representante
       part: Componente
-      distributor: Distribuidor
+      distributor:
+        one: Distribuidor
+        other: Distribuidores
       vendor: Fabricante
       
 
