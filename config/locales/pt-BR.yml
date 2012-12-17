@@ -13,6 +13,7 @@ pt-BR:
 
     models:
       agent: Representante
+      part: Componente
 
     attributes:
       agent:
@@ -20,18 +21,13 @@ pt-BR:
         name: Nome
         phone: Telefone
         role: Função
-
-    models:
-      part: Componente
-
-    attributes:
       part:
         title: Descrição Resumida
         description: Descrição
         ncm: Classificação Fiscal
         place: Localização
-        amont: Quantidade
-        last_prince: Último preço
+        amount: Quantidade
+        last_price: Último preço
         last_volume: Último Volume
 
 
