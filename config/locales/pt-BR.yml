@@ -21,6 +21,20 @@ pt-BR:
         phone: Telefone
         role: Função
 
+    models:
+      part: Componente
+
+    attributes:
+      part:
+        title: Descrição Resumida
+        description: Descrição
+        ncm: Classificação Fiscal
+        place: Localização
+        amont: Quantidade
+        last_prince: Último preço
+        last_volume: Último Volume
+
+
 # Traduções de strings utilizadas pelo Rails
   date:
     abbr_day_names:
