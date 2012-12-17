@@ -169,6 +169,12 @@ pt-BR:
         other: ! 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
     actions: Ações
+    titles:
+      links:
+      new: Novo %{model}
+      edit: Editar %{model}
+      show: Mostrar %{model}
+      destroy: Excluir %{model}
     links:
       new: Novo
       edit: Editar
