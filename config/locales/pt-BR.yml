@@ -1,17 +1,25 @@
 pt-BR:
+  layouts:
+    application:
+      title: BOM Manager
+      parts: Componentes
+      vendors: Fabricantes
+      distributors: Distribuidores
+      agents: Representantes
 
-  models:
-    agent: "Distribuidor"
+  activerecord:
+    errors:
+      <<: *errors
 
-  attributes:
-    agent:
-      distributor: 
-        one: Distribuidor
-        other: Distribuidores
-      email: E-Mail
-      name: Nome
-      phone: Telefone
-      role: Função
+    models:
+      agent: Representante
+
+    attributes:
+      agent:
+        email: E-Mail
+        name: Nome
+        phone: Telefone
+        role: Função
 
 # Traduções de strings utilizadas pelo Rails
   date:
@@ -221,8 +229,5 @@ pt-BR:
     pm: ''
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
-    errors:
-      <<: *errors
-  activerecord:
     errors:
       <<: *errors
