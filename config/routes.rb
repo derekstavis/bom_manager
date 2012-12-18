@@ -1,4 +1,6 @@
 BomManager::Application.routes.draw do
+  root :to => "home#index"
+
   resources :vendor_parts
 
   resources :parts

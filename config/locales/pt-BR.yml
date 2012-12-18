@@ -173,12 +173,12 @@ pt-BR:
     actions: Ações
     titles:
       links:
-      new: Novo %{model}
+      new: Cadastrar %{model}
       edit: Editar %{model}
       show: Mostrar %{model}
       destroy: Excluir %{model}
     links:
-      new: Novo
+      new: Cadastrar
       edit: Editar
       show: Mostrar
       destroy: Excluir
@@ -186,7 +186,7 @@ pt-BR:
     select:
       prompt: Por favor selecione
     submit:
-      create: Criar %{model}
+      create: Cadastrar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
   number:
