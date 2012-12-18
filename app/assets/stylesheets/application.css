@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+footer {
+	background-color: whiteSmoke;
+	height: 60px;
+}
+
+.container .credit {
+	margin: 20px 0;
+}

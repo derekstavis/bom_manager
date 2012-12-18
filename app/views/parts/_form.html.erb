@@ -1,49 +1,77 @@
+<%- model_class = Part -%>
 <%= form_for @part, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :ncm, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :ncm, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :place, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :place, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :amount, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :amount, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_price, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_price, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :last_volume, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :last_volume, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="form-actions">
+<div class="page-header">
+  <h1 class="pull-left"><%=t '.title', :default => t(action, :model => model_class.model_name.human,
+                                 :default => "New #{model_class.model_name.human}") %></h1>
+  <div class="btn-group pull-right">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 parts_path, :class => 'btn' %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group">
+        <%= f.label :title, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :title, :class => 'span4 text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :description, :class => 'span4 text_area', :rows => 5 %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :ncm, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :ncm, :class => 'span4 text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :place, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :place, :class => 'span4 text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :amount, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.number_field :amount, :class => 'span4 number_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :last_price, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :last_price, :class => 'span4 text_field' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :last_volume, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.number_field :last_volume, :class => 'span4 number_field' %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="vendors-parts well">
+        <legend>
+          <%=t('activerecord.models.vendor') %>s
+          e seus <%=t('activerecord.models.vendor_parts.part_number') %>s
+          <div class="control-group pull-right">
+            <%= link_to_add_fields "Criar Novo", f, :vendor_parts, "div.vendors-parts" %>
+          </div>
+        </legend>
+        
+
+        <%= f.fields_for :vendor_parts do |vp| %>
+          <%= render :partial => "vendor_parts_fields", :locals => { :f => vp } %>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>

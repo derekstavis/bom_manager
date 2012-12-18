@@ -25,6 +25,7 @@ class PartsController < ApplicationController
   # GET /parts/new.json
   def new
     @part = Part.new
+    1.times { @part.vendor_parts.build }
 
     respond_to do |format|
       format.html # new.html.erb

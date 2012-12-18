@@ -1,27 +1,40 @@
-<h1>Listing vendor_parts</h1>
-
-<table>
-  <tr>
-    <th>Vendor</th>
-    <th>Part</th>
-    <th>Part number</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @vendor_parts.each do |vendor_part| %>
-  <tr>
-    <td><%= vendor_part.vendor %></td>
-    <td><%= vendor_part.part %></td>
-    <td><%= vendor_part.part_number %></td>
-    <td><%= link_to 'Show', vendor_part %></td>
-    <td><%= link_to 'Edit', edit_vendor_part_path(vendor_part) %></td>
-    <td><%= link_to 'Destroy', vendor_part, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = VendorPart -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:vendor_id) %></th>
+      <th><%= model_class.human_attribute_name(:part_id) %></th>
+      <th><%= model_class.human_attribute_name(:part_number) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vendor_parts.each do |vendor_part| %>
+      <tr>
+        <td><%= link_to vendor_part.id, vendor_part_path(vendor_part) %></td>
+        <td><%= vendor_part.vendor.name %></td>
+        <td><%= vendor_part.part.title %></td>
+        <td><%= vendor_part.part_number %></td>
+        <td><%=l vendor_part.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_vendor_part_path(vendor_part), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      vendor_part_path(vendor_part),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Vendor part', new_vendor_part_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_vendor_part_path,
+            :class => 'btn btn-primary' %>

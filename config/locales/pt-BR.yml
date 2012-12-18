@@ -40,6 +40,8 @@ pt-BR:
         name: Nome
         phone: Telefone
         email: E-mail
+      vendor_part:
+        part_number: Part Number
 
 # Traduções de strings utilizadas pelo Rails
   date:

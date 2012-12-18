@@ -1,0 +1,20 @@
+<div class="control-group">
+  <div class="form-inline">
+    <% if (defined? disabled and defined? vendor and disabled) %>
+      <%= f.text_field(:vendor_id, :disabled => true, :value => vendor) %>
+    <% else %>
+      <%= f.select(:vendor_id, Vendor.all.collect {|v| [v.name, v.id]}) %>
+    <% end %>
+    <div class="input-append">        
+      <% if (defined? disabled and disabled) %>
+        <%= f.text_field :part_number, :class => 'text_field', :disabled => true %>
+        <%= button_tag t("helpers.links.destroy"), :type => "button", :class => "btn btn-danger", :disabled => true %>
+      <% else %>
+        <%= f.text_field :part_number, :class => 'text_field' %>
+        <%= button_tag t("helpers.links.destroy"), :type => "button", :class => "btn btn-danger", :data => { :remove => true } %>
+      <% end %>
+      
+    </div>
+    <%= f.hidden_field :_destroy %>
+  </div>
+</div>

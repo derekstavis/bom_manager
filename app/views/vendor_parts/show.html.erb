@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = VendorPart -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Vendor:</b>
-  <%= @vendor_part.vendor %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:vendor_id) %>:</strong></dt>
+  <dd><%= @vendor_part.vendor_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:part_id) %>:</strong></dt>
+  <dd><%= @vendor_part.part_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:part_number) %>:</strong></dt>
+  <dd><%= @vendor_part.part_number %></dd>
+</dl>
 
-<p>
-  <b>Part:</b>
-  <%= @vendor_part.part %>
-</p>
-
-<p>
-  <b>Part number:</b>
-  <%= @vendor_part.part_number %>
-</p>
-
-
-<%= link_to 'Edit', edit_vendor_part_path(@vendor_part) %> |
-<%= link_to 'Back', vendor_parts_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              vendor_parts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_vendor_part_path(@vendor_part), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              vendor_part_path(@vendor_part),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
