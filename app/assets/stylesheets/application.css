@@ -24,3 +24,7 @@ footer {
 .container .credit {
 	margin: 20px 0;
 }
+
+body > .container {
+	margin-bottom: 100px;
+}
