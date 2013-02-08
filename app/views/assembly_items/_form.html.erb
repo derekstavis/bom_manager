@@ -1,0 +1,50 @@
+<%= form_for @assembly_item, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :assembly_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :assembly_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :assemblable_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :assemblable_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :assemblable_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :assemblable_type, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :position, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :position, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :amount, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :amount, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :comments, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comments, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :bottom, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :bottom, :class => 'check_box' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                assembly_items_path, :class => 'btn' %>
+  </div>
+<% end %>

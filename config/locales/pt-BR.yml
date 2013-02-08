@@ -6,6 +6,7 @@ pt-BR:
       vendors: Fabricantes
       distributors: Distribuidores
       agents: Representantes
+      assemblies: Todos os BOM
 
   activerecord:
     errors:
@@ -18,9 +19,24 @@ pt-BR:
         one: Distribuidor
         other: Distribuidores
       vendor: Fabricante
-      
+      assembly: BOM
 
     attributes:
+      assembly:
+        id: Código
+        assembly_items: Lista de BOM
+        amount: Quantidade
+        description: Descrição
+        title: Título
+        ncm: Classificação Fiscal
+        place: Localização
+      assembly_item:
+        assembly: BOM
+        bottom: Face
+        position: Posição
+        amount: Quantidade
+        assemblable: Ítem
+        comments: Observações
       agent:
         email: E-Mail
         name: Nome
@@ -173,16 +189,17 @@ pt-BR:
     actions: Ações
     titles:
       links:
-      new: Cadastrar %{model}
-      edit: Editar %{model}
-      show: Mostrar %{model}
-      destroy: Excluir %{model}
+        new: Cadastrar %{model}
+        edit: Editar %{model}
+        show: Mostrar %{model}
+        destroy: Excluir %{model}
     links:
       new: Cadastrar
       edit: Editar
       show: Mostrar
       destroy: Excluir
       cancel: Cancelar
+      back: Voltar
     select:
       prompt: Por favor selecione
     submit:

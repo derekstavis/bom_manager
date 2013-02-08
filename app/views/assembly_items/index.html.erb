@@ -1,0 +1,44 @@
+<%- model_class = AssemblyItem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:assembly) %></th>
+      <th><%= model_class.human_attribute_name(:assemblable) %></th>
+      <th><%= model_class.human_attribute_name(:position) %></th>
+      <th><%= model_class.human_attribute_name(:amount) %></th>
+      <th><%= model_class.human_attribute_name(:comments) %></th>
+      <th><%= model_class.human_attribute_name(:bottom) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @assembly_items.each do |assembly_item| %>
+      <tr>
+        <td><%= link_to assembly_item.id, assembly_item_path(assembly_item) %></td>
+        <td><%= assembly_item.assembly.title %></td>
+        <td><%= assembly_item.assemblable.title %></td>
+        <td><%= assembly_item.position %></td>
+        <td><%= assembly_item.amount %></td>
+        <td><%= assembly_item.comments %></td>
+        <td><%= assembly_item.bottom %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_assembly_item_path(assembly_item), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      assembly_item_path(assembly_item),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_assembly_item_path,
+            :class => 'btn btn-primary' %>

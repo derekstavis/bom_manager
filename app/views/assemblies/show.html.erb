@@ -1,0 +1,129 @@
+<%- model_class = Assembly -%>
+<div class="page-header">
+  <h1 class="pull-left"><%= @assembly.title %></h1>
+  <div class="btn-group pull-right">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                assemblies_path, :class => 'btn'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_assembly_path(@assembly), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                assembly_path(@assembly),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div>
+  <dl class="dl-horizontal">
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td><b><%= model_class.human_attribute_name(:title) %></b></td>
+          <td><%= @assembly.title %></td>
+          <td><b><%= model_class.human_attribute_name(:ncm) %></b></td>
+          <td><%= @assembly.ncm %></td>
+        </tr>
+        <tr>
+          <td><b><%= model_class.human_attribute_name(:place) %></b></td>
+          <td><%= @assembly.place %></td>
+          <td><b><%= model_class.human_attribute_name(:amount) %></b></td>
+          <td><%= @assembly.amount %></td>
+        </tr>
+        <tr>
+          <td><b><%= model_class.human_attribute_name(:description) %></b></td>
+          <td colspan="4"><%= @assembly.description %></td>
+        </tr>
+      </tbody>
+    </table>
+  </dl>
+</div>
+<div>
+  <legend>Adicionar &Iacute;tem ao BOM</legend>
+  <div class="well well-small">
+    <%= form_for @new_item, :html => { :class => 'form form-inline' } do |f| %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= f.label :assemblable, :class => 'control-label' %></th>
+              <th><%= f.label :position, :class => 'control-label' %></th>
+              <th><%= f.label :amount, :class => 'control-label' %></th>
+              <th><%= f.label :bottom, :class => 'control-label' %></th>
+              <th><%= f.label :comments, :class => 'control-label' %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= f.select :assemblable_id, 
+                             grouped_options_for_select(@grouped_options),
+                             {}, :class => 'input-xlarge chzn-select assembly-items' %>
+                <%= f.hidden_field :assemblable_type %>
+                <%= f.hidden_field :assembly_id %>
+              </td>
+              <td><%= f.text_field :position, :class => 'text_field' %></td>
+              <td><%= f.number_field :amount, :class => 'number_field input-mini' %></td>
+              <td>
+                <label class="checkbox">
+                  <%= f.check_box :bottom %>
+                   Inferior
+                </label>
+              </td>
+              <td>
+                <div class="input-append ">
+                  <%= f.text_field :comments, :class => 'input-xlarge ' %>
+                  <%= button_tag "Adicionar", :class => "btn btn-danger" %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    <% end %>
+  </div>
+</div>
+
+<%- item_class = AssemblyItem -%>
+<legend>&Iacute;tens do BOM</legend>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th><%= item_class.human_attribute_name(:id) %></th>
+        <th><%= item_class.human_attribute_name(:assemblable) %></th>
+        <th><%= item_class.human_attribute_name(:position) %></th>
+        <th><%= item_class.human_attribute_name(:amount) %></th>
+        <th><%= item_class.human_attribute_name(:bottom) %></th>
+        <th><%= item_class.human_attribute_name(:comments) %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @assembly.assembly_items.each_with_index do |item, index| %>
+        <tr>
+          <td><%= index.to_s %></td>
+          <td><%= item.assemblable.id.to_s %></td>
+          <td>
+            <% if item.assemblable.kind_of? Assembly %>
+              <%= link_to item.assemblable, item.assemblable.title %>
+            <% else %>
+              <%= item.assemblable.try(:title) %>
+            <% end %>
+          </td>
+          <td><%= item.position %></td>
+          <td><%= item.amount.to_s %></td>
+          <td><%= item.bottom ? "Bottom" : "Top" %></td>
+          <td><%= item.comments %></td>
+          <td>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                assembly_item_path(item),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger btn-mini' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

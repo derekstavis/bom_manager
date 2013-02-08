@@ -1,6 +1,12 @@
 <%- model_class = Agent -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1 class="pull-left"><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <div class="btn-group pull-right">
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_agent_path,
+            :class => 'btn btn-primary' %>
+  </div>
+  <div class="clearfix"></div>
 </div>
 <table class="table table-striped">
   <thead>
@@ -10,8 +16,7 @@
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:role) %></th>
-      <th><%= model_class.human_attribute_name(:distributor_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:distributor) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,8 +28,7 @@
         <td><%= agent.phone %></td>
         <td><%= agent.email %></td>
         <td><%= agent.role %></td>
-        <td><%= agent.distributor_id %></td>
-        <td><%=l agent.created_at %></td>
+        <td><%= agent.distributor.name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_agent_path(agent), :class => 'btn btn-mini' %>
@@ -38,7 +42,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_agent_path,
-            :class => 'btn btn-primary' %>

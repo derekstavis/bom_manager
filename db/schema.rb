@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207141034) do
+ActiveRecord::Schema.define(:version => 20130207183324) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,30 @@ ActiveRecord::Schema.define(:version => 20130207141034) do
   end
 
   add_index "agents", ["distributor_id"], :name => "index_agents_on_distributor_id"
+
+  create_table "assemblies", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "ncm"
+    t.string   "place"
+    t.integer  "amount"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "assembly_items", :force => true do |t|
+    t.integer  "assembly_id"
+    t.integer  "assemblable_id"
+    t.string   "assemblable_type"
+    t.string   "position"
+    t.integer  "amount"
+    t.text     "comments"
+    t.boolean  "bottom"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "assembly_items", ["assembly_id"], :name => "index_assembly_items_on_assembly_id"
 
   create_table "distributors", :force => true do |t|
     t.string   "name"

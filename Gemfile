@@ -33,12 +33,13 @@ gem 'twitter-bootstrap-rails'
 
 gem 'capistrano'
 
+gem 'chosen-rails'
+
 group :production do
 	
 	gem 'mysql2'
 
 end
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
